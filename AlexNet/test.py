@@ -57,6 +57,7 @@ if __name__ == '__main__':
             # print(pred)
             # 得到预测类别中最高的那一类，再把最高的这一类对应classes中的哪一类标签
             predicted, actual = classes[torch.argmax(pred, 1).item()], classes[target]
+
             # 最终输出的预测值与真实值
             # print(f'predicted: "{predicted}", actual:"{actual}"')
             if predicted == actual:

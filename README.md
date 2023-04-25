@@ -24,6 +24,7 @@
 - 损失函数  CrossEntropyLoss
 - 优化器    SGD
 - epoch    100
+- 精度      99.61
 
 
 ## AlexNet
@@ -48,24 +49,5 @@
 
 - 损失函数  CrossEntropyLoss
 - 优化器    SGD
-- epoch    100
-
-
-
-
-
-```text
-'''
-# 0 维度 10 个
-# 1 维度 16 个
-
-print(torch.max(output, 0)[0]) # 值
-print(torch.max(output, 0)[1]) # 值
-print(torch.max(output, 1)[0]) # 位置
-print(torch.max(output, 1)[1]) # 位置
-print("****************************************")
-print(output.argmax(0))
-print(output.argmax(1))
-        '''
-
-```
+- epoch     100
+- 精度      62.09
