@@ -1,0 +1,45 @@
+{
+    "os": "Windows-10-10.0.19044-SP0",
+    "python": "3.8.16",
+    "heartbeatAt": "2023-04-24T03:01:02.115212",
+    "startedAt": "2023-04-24T03:00:59.836025",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "C:/Users/32243/Desktop/ImagePaoGe/AlexNet/train.py",
+    "codePath": "AlexNet\\train.py",
+    "git": {
+        "remote": "https://github.com/dongchao612/ImagePaoGe.git",
+        "commit": "e68e51bf3adf0d8ed5d4130fc995fb386d86f605"
+    },
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 1801.0,
+        "min": 0.0,
+        "max": 1801.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1801.0,
+            "min": 0.0,
+            "max": 1801.0
+        }
+    ],
+    "disk": {
+        "total": 118.56922912597656,
+        "used": 91.0807113647461
+    },
+    "gpu": "NVIDIA GeForce 940MX",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce 940MX",
+            "memory_total": 2147483648
+        }
+    ],
+    "memory": {
+        "total": 7.869518280029297
+    }
+}
