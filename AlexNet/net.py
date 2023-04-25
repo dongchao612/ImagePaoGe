@@ -1,6 +1,5 @@
 import torch
-from torch.nn import Module, Conv2d, Sigmoid, AvgPool2d, Flatten, Linear, ReLU, MaxPool2d, Dropout
-from torch import nn
+from torch.nn import Module, Conv2d, Flatten, Linear, ReLU, MaxPool2d, Dropout
 
 
 class AlexNet(Module):

@@ -124,12 +124,12 @@ if __name__ == '__main__':
         transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])  # 将图像像素归一化到[-1,1]之间
     ])
 
-    bs = 32
+    batchSize = 32
     train_data = ImageFolder(root=tain_root, transform=train_transform)
     test_data = ImageFolder(root=test_root, transform=test_transform)
 
-    train_dataloader = DataLoader(train_data, batch_size=bs, shuffle=True, drop_last=True)  # 训练集
-    test_dataloader = DataLoader(test_data, batch_size=bs, shuffle=True, drop_last=True)  # 测试集合
+    train_dataloader = DataLoader(train_data, batch_size=batchSize, shuffle=True, drop_last=True)  # 训练集
+    test_dataloader = DataLoader(test_data, batch_size=batchSize, shuffle=True, drop_last=True)  # 测试集合
 
     print("train_data.__len__():", train_data.__len__())  # 244
     print("test_data.__len__():", test_data.__len__())  # 153

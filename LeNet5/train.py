@@ -12,6 +12,7 @@ from torchvision.transforms import ToTensor
 
 from LeNet5.net import LeNet5
 import matplotlib
+
 matplotlib.use("qt5agg")
 
 plt.rcParams['font.sans-serif'] = ["SimHei"]
@@ -19,6 +20,7 @@ plt.rcParams['axes.unicode_minus'] = False
 
 torch.backends.cudnn.enabled = True
 torch.backends.cudnn.benchmark = True
+
 
 # 定义训练函数
 def train(dataloader, model, loss_fn, optimizer):
@@ -105,14 +107,14 @@ if __name__ == '__main__':
     data_transform = transforms.Compose([
         ToTensor()
     ])
-    bs = 32
+    batchSize = 32
 
     # 加载数据,train_dataloader是一个16*784的矩阵,一共3750个，test_dataloader是一个16*784的矩阵,一共625个
     train_dataset = MNIST(root="./data", train=True, transform=data_transform, download=True)
     test_dataset = MNIST(root="./data", train=False, transform=data_transform, download=True)
 
-    train_dataloader = DataLoader(train_dataset, batch_size=bs, shuffle=True, drop_last=True)
-    test_dataloader = DataLoader(test_dataset, batch_size=bs, shuffle=True, drop_last=True)
+    train_dataloader = DataLoader(train_dataset, batch_size=batchSize, shuffle=True, drop_last=True)
+    test_dataloader = DataLoader(test_dataset, batch_size=batchSize, shuffle=True, drop_last=True)
 
     print("train_dataset.__len__():", train_dataset.__len__())  # 60000
     print("train_dataloader.__len__():", train_dataloader.__len__())  # 3750
@@ -168,7 +170,7 @@ if __name__ == '__main__':
             if not os.path.exists(folder):
                 os.mkdir(folder)
             min_acc = val_acc
-            print('save best model',"train_acc=",train_acc,"val_acc=",val_acc)
+            print('save best model', "train_acc=", train_acc, "val_acc=", val_acc)
             torch.save(model.state_dict(), f"{folder}/best_model.pth")
 
     print("训练完成,开始画图...")

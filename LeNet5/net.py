@@ -7,14 +7,14 @@ class LeNet5(Module):
     def __init__(self):
         super(LeNet5, self).__init__()
 
-        self.c1 = Conv2d(in_channels=1, out_channels=6, kernel_size=5, padding=2)
+        self.c1 = Conv2d(in_channels=1, out_channels=6, kernel_size=(5,5), padding=2)
 
         self.Sigmoid = Sigmoid()
 
         self.s2 = AvgPool2d(kernel_size=2, stride=2)
-        self.c3 = Conv2d(in_channels=6, out_channels=16, kernel_size=5)
+        self.c3 = Conv2d(in_channels=6, out_channels=16, kernel_size=(5,5))
         self.s4 = AvgPool2d(kernel_size=2, stride=2)
-        self.c5 = Conv2d(in_channels=16, out_channels=120, kernel_size=5)
+        self.c5 = Conv2d(in_channels=16, out_channels=120, kernel_size=(5,5))
 
         self.flatten = Flatten()
 
