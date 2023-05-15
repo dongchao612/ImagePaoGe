@@ -1,5 +1,5 @@
 import os
-import wandb
+
 import matplotlib.pylab as plt
 import torch
 from torch.nn import CrossEntropyLoss
@@ -15,8 +15,8 @@ plt.rcParams['font.sans-serif'] = ["SimHei"]
 plt.rcParams['axes.unicode_minus'] = False
 
 
-torch.backends.cudnn.enabled = True
-torch.backends.cudnn.benchmark = True
+torch.backends.enabled = True
+torch.backends.benchmark = True
 
 
 # 定义训练函数
@@ -26,7 +26,10 @@ def train(dataloader, model, loss_fn, optimizer):
     loss, current, n = 0.0, 0.0, 0.0
     for batch, (x, y) in enumerate(dataloader):
         image, y = x.to(device), y.to(device)
+
         output = model(image)
+        # print(image.shape, y.shape,output.shape)
+        # torch.Size([32, 2]) torch.Size([32])
         curr_loss = loss_fn(output, y)
         cur_acc = sum(y == output.argmax(1)) / output.shape[0]
 
@@ -97,20 +100,6 @@ if __name__ == '__main__':
     tain_root = r"./data/train"
     test_root = r"./data/test"
 
-    # start a new wandb run to track this script
-    wandb.init(
-        # set the wandb project where this run will be logged
-        project="AlexNet",
-
-        # track hyperparameters and run metadata
-        config={
-            "learning_rate": 0.02,
-            "architecture": "CNN",
-            "dataset": "ants-ees",
-            "epochs": 100,
-        }
-    )
-
     # 数据处理
     train_transform = transforms.Compose([
         transforms.Resize((224, 224)),  # 重置大小到224*224
@@ -177,8 +166,7 @@ if __name__ == '__main__':
 
         scheduler.step()
 
-        wandb.log({"val_acc": val_acc, "loss": val_loss})
-    ''' 
+
         # 保存最好的模型权重
         if val_acc > min_acc:
             folder = "save_model"
@@ -192,6 +180,5 @@ if __name__ == '__main__':
     #print("训练完成,开始画图...")
     matplot_loss(train_loss_list=train_loss_list, val_loss_list=val_loss_list)
     matplot_acc(train_acc_list=train_acc_list, val_acc_list=val_acc_list)
-    
-    '''
-    wandb.finish()
+
+

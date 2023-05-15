@@ -18,8 +18,8 @@ matplotlib.use("qt5agg")
 plt.rcParams['font.sans-serif'] = ["SimHei"]
 plt.rcParams['axes.unicode_minus'] = False
 
-torch.backends.cudnn.enabled = True
-torch.backends.cudnn.benchmark = True
+torch.backends.enabled = True
+torch.backends.benchmark = True
 
 
 # 定义训练函数
