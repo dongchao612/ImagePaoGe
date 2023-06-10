@@ -14,7 +14,6 @@ from AlexNet.net import AlexNet
 plt.rcParams['font.sans-serif'] = ["SimHei"]
 plt.rcParams['axes.unicode_minus'] = False
 
-
 torch.backends.enabled = True
 torch.backends.benchmark = True
 
@@ -43,8 +42,8 @@ def train(dataloader, model, loss_fn, optimizer):
         current += cur_acc.item()
         n = n + 1
 
-    #print("train_loss:", loss / n)
-    #print("train_acc:", (current / n) * 100)
+    # print("train_loss:", loss / n)
+    # print("train_acc:", (current / n) * 100)
 
     return loss / n, current / n
 
@@ -65,8 +64,8 @@ def val(dataloader, model, loss_fn):
             current += cur_acc.item()
             n = n + 1
 
-    #print("val_loss:", loss / n)
-    #print("val_acc:", (current / n) * 100)
+    # print("val_loss:", loss / n)
+    # print("val_acc:", (current / n) * 100)
 
     return loss / n, current / n
 
@@ -145,7 +144,7 @@ if __name__ == '__main__':
     # val(test_dataloader, model, loss_fn)#val_loss: 0.6920500755310058 val_acc: 56.99999928474426
 
     # 开始训练
-    epoch = 100
+    epoch = 500
     min_acc = 0
 
     train_loss_list = []
@@ -166,19 +165,15 @@ if __name__ == '__main__':
 
         scheduler.step()
 
-
         # 保存最好的模型权重
         if val_acc > min_acc:
             folder = "save_model"
             if not os.path.exists(folder):
                 os.mkdir(folder)
             min_acc = val_acc
-            print('save best model',"train_acc=",train_acc,"val_acc=",val_acc)
+            print('save best model', "train_acc=", train_acc, "val_acc=", val_acc)
             torch.save(model.state_dict(), f"{folder}/best_model.pth")
 
-
-    #print("训练完成,开始画图...")
+    # print("训练完成,开始画图...")
     matplot_loss(train_loss_list=train_loss_list, val_loss_list=val_loss_list)
     matplot_acc(train_acc_list=train_acc_list, val_acc_list=val_acc_list)
-
-
